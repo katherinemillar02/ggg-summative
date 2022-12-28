@@ -189,6 +189,9 @@ sum(is.na(class_data_new))
 
 
 class_data_2 <- (read_excel(path = "data/GGG_summative.xlsx", na = "NA"))
+
+class_data_1 <- (read_excel(path = "data/GGG_1.xlsx", na = "NA"))
+
 #____ Making the data long 
 long_class_data_1 <- class_data_1 %>% 
   pivot_longer(cols = ("37/37":"37/37"), names_to = "temperatures", values_to = "colony_count")
@@ -221,7 +224,7 @@ class_data_plot_1 <- class_data_summary_1 %>%
        y = "Mean (+/- S.E.) number of colonies on plate",
        title = "mutS (37 °C/ 37 °C)")+
   theme_minimal()
-conf.int=T)
+
 
 
 class_data <- (read_excel(path = "data/GGG_summative.xlsx", na = "NA"))
@@ -406,14 +409,21 @@ class_data_plot_04 <- class_data_summary_04 %>%
 
 
 
+
 class_data_plot_01 + class_data_plot_02 + class_data_plot_03 + class_data_plot_04
 class_data_plot_01 + class_data_plot_02
 class_data_plot_03 + class_data_plot_04 
 
 
 
-alldata <- rbind(long_class_data_1, long_class_data_2, long_class_data_3, long_class_data_4)
+alldata <- rbind(long_class_data_1, long_class_data_01)
 
+lmboth <- lm(colony_count ~ temperatures, data = alldata)
+
+summary(lmboth)
+broom::tidy(lmboth)
+  
+long_class_data_1
 
 
 
