@@ -417,12 +417,18 @@ class_data_plot_03 + class_data_plot_04
 
 
 alldata <- rbind(long_class_data_1, long_class_data_01)
+alldata2 <- rbind(long_class_data_2, long_class_data_02)
 
 lmboth <- lm(colony_count ~ temperatures, data = alldata)
+lmboth2 <- lm(colony_count ~ temperatures, data = alldata2)
 
 summary(lmboth)
 broom::tidy(lmboth)
+
+summary(lmboth2)
+broom::tidy(lmboth2)
   
+
 long_class_data_1
 
 
