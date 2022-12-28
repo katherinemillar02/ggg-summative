@@ -2,6 +2,7 @@ library(tidyverse)
 library(readxl)
 library(patchwork)
 
+
 class_data_1 <- (read_excel(path = "data/GGG_1.xlsx", na = "NA"))
 class_data_2 <- (read_excel(path = "data/GGG_2.xlsx", na = "NA"))
 class_data_3 <- (read_excel(path = "data/GGG_3.xlsx", na = "NA"))
@@ -264,7 +265,7 @@ conf.int=T)
 class_data_01 <- (read_excel(path = "data/GGG_01.xlsx", na = "NA"))
 
 long_class_data_01 <- class_data_01 %>% 
-  pivot_longer(cols = ("37/37WT":"37/37mutS-"), names_to = "temperatures", values_to = "colony_count")
+  pivot_longer(cols = ("37/37WT":"37/37WT"), names_to = "temperatures", values_to = "colony_count")
 
 class_data_summary_01 <- long_class_data_01 %>% 
   group_by(temperatures) %>% 
@@ -289,12 +290,127 @@ class_data_plot_01 <- class_data_summary_01 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,2000)+
+  ylim(0,10)+
   labs(x = "",
        y = "", 
-       title = "mutS 30/30")+
+       title = "WT 37/37")+
   theme_minimal()
-conf.int=T)
+
+
+class_data_02 <- (read_excel(path = "data/GGG_02.xlsx", na = "NA"))
+
+long_class_data_02 <- class_data_02 %>% 
+  pivot_longer(cols = ("30/30 WT":"30/30 WT"), names_to = "temperatures", values_to = "colony_count")
+
+class_data_summary_02 <- long_class_data_02 %>% 
+  group_by(temperatures) %>% 
+  summarise(mean = mean(colony_count),
+            sd = sd(colony_count),
+            n = n(),
+            se = sd/sqrt(n))
+
+
+class_data_plot_02 <- class_data_summary_02 %>% 
+  ggplot(aes(x = temperatures, y = mean))+
+  geom_bar(stat = "identity",
+           fill = "skyblue",
+           colour = "salmon",
+           alpha = 0.6)+
+  geom_errorbar(aes(ymin = mean-se, ymax = mean+se), 
+                colour = "salmon",
+                width = 0.2)+
+  geom_jitter(data = long_class_data_02,
+              aes(x = temperatures,
+                  y = colony_count),
+              fill = "salmon",
+              colour = "white",
+              width = 0.2,
+              shape = 21)+
+  ylim(0,10)+
+  labs(x = "",
+       y = "", 
+       title = "WT 30/30")+
+  theme_minimal()
+
+
+class_data_03 <- (read_excel(path = "data/GGG_03.xlsx", na = "NA"))
+
+long_class_data_03 <- class_data_03 %>% 
+  pivot_longer(cols = ("37/30 WT":"37/30 WT"), names_to = "temperatures", values_to = "colony_count")
+
+class_data_summary_03 <- long_class_data_03 %>% 
+  group_by(temperatures) %>% 
+  summarise(mean = mean(colony_count),
+            sd = sd(colony_count),
+            n = n(),
+            se = sd/sqrt(n))
+
+
+class_data_plot_03 <- class_data_summary_03 %>% 
+  ggplot(aes(x = temperatures, y = mean))+
+  geom_bar(stat = "identity",
+           fill = "skyblue",
+           colour = "salmon",
+           alpha = 0.6)+
+  geom_errorbar(aes(ymin = mean-se, ymax = mean+se), 
+                colour = "salmon",
+                width = 0.2)+
+  geom_jitter(data = long_class_data_03,
+              aes(x = temperatures,
+                  y = colony_count),
+              fill = "salmon",
+              colour = "white",
+              width = 0.2,
+              shape = 21)+
+  ylim(0,10)+
+  labs(x = "",
+       y = "", 
+       title = "WT 37/30")+
+  theme_minimal()
+
+class_data_04 <- (read_excel(path = "data/GGG_04.xlsx", na = "NA"))
+
+long_class_data_04 <- class_data_04 %>% 
+  pivot_longer(cols = ("30/37 WT":"30/37 WT"), names_to = "temperatures", values_to = "colony_count")
+
+class_data_summary_04 <- long_class_data_04 %>% 
+  group_by(temperatures) %>% 
+  summarise(mean = mean(colony_count),
+            sd = sd(colony_count),
+            n = n(),
+            se = sd/sqrt(n))
+
+
+class_data_plot_04 <- class_data_summary_04 %>% 
+  ggplot(aes(x = temperatures, y = mean))+
+  geom_bar(stat = "identity",
+           fill = "skyblue",
+           colour = "salmon",
+           alpha = 0.6)+
+  geom_errorbar(aes(ymin = mean-se, ymax = mean+se), 
+                colour = "salmon",
+                width = 0.2)+
+  geom_jitter(data = long_class_data_04,
+              aes(x = temperatures,
+                  y = colony_count),
+              fill = "salmon",
+              colour = "white",
+              width = 0.2,
+              shape = 21)+
+  ylim(0,10)+
+  labs(x = "",
+       y = "", 
+       title = "WT 30/37")+
+  theme_minimal()
+
+
+
+
+class_data_plot_01 + class_data_plot_02 + class_data_plot_03 + class_data_plot_04
+class_data_plot_01 + class_data_plot_02
+class_data_plot_03 + class_data_plot_04 
+
+
 
 alldata <- rbind(long_class_data_1, long_class_data_2, long_class_data_3, long_class_data_4)
 
