@@ -294,8 +294,8 @@ class_data_plot_01 <- class_data_summary_01 %>%
               width = 0.2,
               shape = 21)+
   ylim(0,10)+
-  labs(x = "",
-       y = "", 
+  labs(x = "non-selective/ selective temp (°C)",
+       y = "Mean (+/- S.E.) number of colonies on plate", 
        title = "WT 37/37")+
   theme_minimal()
 
@@ -330,8 +330,8 @@ class_data_plot_02 <- class_data_summary_02 %>%
               width = 0.2,
               shape = 21)+
   ylim(0,10)+
-  labs(x = "",
-       y = "", 
+  labs(x = "non-selective/ selective temp (°C)",
+       y = "Mean (+/- S.E.) number of colonies on plate", 
        title = "WT 30/30")+
   theme_minimal()
 
@@ -411,7 +411,15 @@ class_data_plot_04 <- class_data_summary_04 %>%
 
 
 class_data_plot_01 + class_data_plot_02 + class_data_plot_03 + class_data_plot_04
-class_data_plot_01 + class_data_plot_02
+
+p01 <- class_data_plot_01 + class_data_plot_02 
+
+patchwork1 + p01
+
+patchwork1 
+
+class_data_plot_1 + class_data_plot_01
+
 class_data_plot_03 + class_data_plot_04 
 
 
