@@ -367,7 +367,7 @@ class_data_plot_03 <- class_data_summary_03 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,2000)+
+  ylim(0,10)+
   labs(x = "",
        y = "", 
        title = "WT 37/30")+
@@ -402,7 +402,7 @@ class_data_plot_04 <- class_data_summary_04 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,2000)+
+  ylim(0,10)+
   labs(x = "",
        y = "", 
        title = "WT 30/37")+
@@ -426,6 +426,8 @@ class_data_plot_2 + class_data_plot_02
 class_data_plot_3 + class_data_plot_03
 class_data_plot_4 + class_data_plot_04
 
+
+
 class_data_plot_03 + class_data_plot_04 
 
 
@@ -445,6 +447,14 @@ broom::tidy(lmboth2)
 
 long_class_data_1
 
+thirtyseven <- rnorm(18, mean = 508, sd = 106)
+thirty <- rnorm(10, mean = 385, sd = 716)
 
+t.test(thirtyseven, thirty, var.equal = FALSE )
+t.test(thirtyseven, thirty, var.equal = TRUE )
 
 lm1 <- lm(temperatures ~ colony_count, data = long_class_data_1)
+
+summary(lm1)
+
+compare <- rbind(class_data_1 + class_data_2)
