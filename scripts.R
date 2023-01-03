@@ -127,6 +127,8 @@ patchwork2 <- class_data_plot_3 + class_data_plot_4
 patchwork1 
 patchwork2
 
+class_data_plot_01 + class_data_plot_1
+
 patchwork1+patchwork2
 
 patchwork1  + class_data_plot_3 + class_data_plot_4
@@ -293,7 +295,7 @@ class_data_plot_01 <- class_data_summary_01 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,10)+
+  ylim(0,2000)+
   labs(x = "non-selective/ selective temp (°C)",
        y = "Mean (+/- S.E.) number of colonies on plate", 
        title = "WT 37/37")+
@@ -329,7 +331,7 @@ class_data_plot_02 <- class_data_summary_02 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,10)+
+  ylim(0,2000)+
   labs(x = "non-selective/ selective temp (°C)",
        y = "Mean (+/- S.E.) number of colonies on plate", 
        title = "WT 30/30")+
@@ -365,7 +367,7 @@ class_data_plot_03 <- class_data_summary_03 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,10)+
+  ylim(0,2000)+
   labs(x = "",
        y = "", 
        title = "WT 37/30")+
@@ -400,7 +402,7 @@ class_data_plot_04 <- class_data_summary_04 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,10)+
+  ylim(0,2000)+
   labs(x = "",
        y = "", 
        title = "WT 30/37")+
@@ -419,6 +421,10 @@ patchwork1 + p01
 patchwork1 
 
 class_data_plot_1 + class_data_plot_01
+class_data_plot_2 + class_data_plot_02
+
+class_data_plot_3 + class_data_plot_03
+class_data_plot_4 + class_data_plot_04
 
 class_data_plot_03 + class_data_plot_04 
 
