@@ -295,7 +295,7 @@ class_data_plot_01 <- class_data_summary_01 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,2000)+
+  ylim(0,10)+
   labs(x = "non-selective/ selective temp (°C)",
        y = "Mean (+/- S.E.) number of colonies on plate", 
        title = "WT 37/37")+
@@ -331,7 +331,7 @@ class_data_plot_02 <- class_data_summary_02 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,2000)+
+  ylim(0,10)+
   labs(x = "non-selective/ selective temp (°C)",
        y = "Mean (+/- S.E.) number of colonies on plate", 
        title = "WT 30/30")+
@@ -427,6 +427,7 @@ class_data_plot_3 + class_data_plot_03
 class_data_plot_4 + class_data_plot_04
 
 
+class_data_plot_01 + class_data_plot_02
 
 class_data_plot_03 + class_data_plot_04 
 
@@ -434,6 +435,11 @@ class_data_plot_03 + class_data_plot_04
 
 alldata <- rbind(long_class_data_1, long_class_data_01)
 alldata2 <- rbind(long_class_data_2, long_class_data_02)
+
+class_data_summary_2 
+
+class_data_summary_02
+
 
 lmboth <- lm(colony_count ~ temperatures, data = alldata)
 lmboth2 <- lm(colony_count ~ temperatures, data = alldata2)
@@ -450,7 +456,27 @@ long_class_data_1
 thirtyseven <- rnorm(18, mean = 508, sd = 106)
 thirty <- rnorm(10, mean = 385, sd = 716)
 
+wtts <- rnorm(18, mean = 5.67, sd = 14.9)
+wtt <- rnorm(10, mean = 1.4, sd = 2.07 )
+
+class_data_summary_01
+class_data_summary_02
+
+thirtyandthirtyseven <- rnorm(2, mean = 198, sd = 110)
+
+t.test(thirtyseven, thirty, var.equal = TRUE )
 t.test(thirtyseven, thirty, var.equal = FALSE )
+
+var.test(thirtyandthirtyseven, thirtyseven)
+var.test(wtt, thirtyseven)
+
+var.test(wtts, wtt)
+
+
+t.test(thirtyandthirtyseven, thirty, var.equal = FALSE )
+
+t.test(wtts, wtt, var.equal = FALSE )
+
 t.test(thirtyseven, thirty, var.equal = TRUE )
 
 lm1 <- lm(temperatures ~ colony_count, data = long_class_data_1)
