@@ -484,3 +484,5 @@ lm1 <- lm(temperatures ~ colony_count, data = long_class_data_1)
 summary(lm1)
 
 compare <- rbind(class_data_1 + class_data_2)
+
+class_data_plot_1 + class_data_plot_4 
