@@ -47,7 +47,7 @@ class_data_plot_2 <- class_data_summary_2 %>%
   ylim(0,2000)+
   labs(x = "non-selective/ selective temp (°C)",
        y =  "Mean (+/- S.E.) number of colonies on plate", 
-       title = "mutS (30 °C/ 30 °C)")+
+       title = "mutS- (30 °C/ 30 °C)")+
   theme_minimal()
 conf.int=T)
 
@@ -117,9 +117,8 @@ class_data_plot_4 <- class_data_summary_4 %>%
   ylim(0,2000)+
   labs(x = "non-selective/ selective temp (°C)",
        y = "Mean (+/- S.E.) number of colonies on plate", 
-       title = "mutS (30 °C/ 37 °C)")+
+       title = "mutS- (30 °C/ 37 °C)")+
   theme_minimal()
-conf.int=T)
 
 patchwork1 <- class_data_plot_1 + class_data_plot_2 
 patchwork2 <- class_data_plot_3 + class_data_plot_4
@@ -177,7 +176,7 @@ class_data_plot_1 <- class_data_summary_1 %>%
   ylim(0,2000)+
   labs(x = "",
        y = "Mean (+/- S.E.) number of colonies on plate", 
-       title = "mutS (37 °C/ 37 °C)")+
+       title = "mutS- (37 °C/ 37 °C)")+
   theme_minimal()
 conf.int=T)
 
@@ -298,7 +297,7 @@ class_data_plot_01 <- class_data_summary_01 %>%
   ylim(0,10)+
   labs(x = "non-selective/ selective temp (°C)",
        y = "Mean (+/- S.E.) number of colonies on plate", 
-       title = "WT 37/37")+
+       title = "WT (37 °C/ 37 °C)")+
   theme_minimal()
 
 
@@ -334,7 +333,7 @@ class_data_plot_02 <- class_data_summary_02 %>%
   ylim(0,10)+
   labs(x = "non-selective/ selective temp (°C)",
        y = "Mean (+/- S.E.) number of colonies on plate", 
-       title = "WT 30/30")+
+       title = "WT (30 °C/ 30°C)")+
   theme_minimal()
 
 
@@ -367,10 +366,10 @@ class_data_plot_03 <- class_data_summary_03 %>%
               colour = "white",
               width = 0.2,
               shape = 21)+
-  ylim(0,10)+
-  labs(x = "",
-       y = "", 
-       title = "WT 37/30")+
+  ylim(0,2000)+
+  labs(x = "non-selective/ selective temp (°C)",
+       y = "The number of colonies on plate", 
+       title = "WT (37 °C/ 30 °C)")+
   theme_minimal()
 
 class_data_04 <- (read_excel(path = "data/GGG_04.xlsx", na = "NA"))
@@ -403,9 +402,9 @@ class_data_plot_04 <- class_data_summary_04 %>%
               width = 0.2,
               shape = 21)+
   ylim(0,10)+
-  labs(x = "",
-       y = "", 
-       title = "WT 30/37")+
+  labs(x = "non-selective/ selective temp (°C)",
+       y = "Mean (+/- S.E.) number of colonies on plate", 
+       title = "WT (30 °C/ 37 °C)")+
   theme_minimal()
 
 
@@ -430,6 +429,8 @@ class_data_plot_4 + class_data_plot_04
 class_data_plot_01 + class_data_plot_02
 
 class_data_plot_03 + class_data_plot_04 
+
+class_data_plot_1 + class_data_plot_4
 
 
 
